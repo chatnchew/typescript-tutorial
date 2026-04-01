@@ -1,6 +1,5 @@
-var character = 'mario';
-console.log(character);
-var inputs = document.querySelectorAll('input');
-inputs.forEach(function (input) {
+"use strict";
+const inputs = document.querySelectorAll('input');
+inputs.forEach(input => {
     console.log(input);
 });
