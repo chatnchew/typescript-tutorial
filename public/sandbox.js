@@ -1,19 +1,21 @@
 "use strict";
-// let greet: Function = () => {
-//   console.log('hello, world');
-// }
-// greet = 'hello';
-// greet = () => {
-//   console.log('hello, again');
-// }
-var add = function (a, b, c /*?*/) {
-    if (c === void 0) { c /*?*/ = 10; }
+// function basics
+let greet;
+greet = () => {
+    console.log("hello world");
+};
+// typescript will automatically infer a function's type as function; trying to set it as another data type will result in an error
+// here we've set the type explicitly before defining the function
+const add = (a, b, c = 20) => {
     console.log(a + b);
     console.log(c);
 };
-add(5, 10, 'ninja');
-var minus = function (a, b) {
+// the return type of this function is void, since nothing is actually being returned; it's rendered to undefined when compiled to JS
+add(5, 10);
+// placing a question mark before type definition will make it an optional parameter; it's value will be undefined
+// can set default values for parameters like normal; it's recommended to place these and optional parameters last
+const minus = (a, b) => {
+    // you can set a type for the returned value explicitly, but it's not always necessary
     return a + b;
 };
-var result = minus(10, 7);
-console.log(result);
+let result = minus(10, 7); // result has the type of the returned value of the function (a number); we cannot change the type later since it's already been inferred
