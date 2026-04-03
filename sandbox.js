@@ -1,17 +1,23 @@
-var age = 25;
+"use strict";
+// any type
+let age = 25;
+// means that it can take literally any type - number, string, boolean, etc - and be reassigned to any type later. all of the below is allowed
 age = true;
 console.log(age);
-age = 'hello';
+age = "hello";
 console.log(age);
-age = { name: 'luigi' };
+age = { name: "luigi" };
 console.log(age);
-var mixed = [];
+// long story short - makes TS operate more like JS. has limited real usage b/c it can be dangerous!
+let mixed = [];
+// this array can now take any kind of value
 mixed.push(5);
-mixed.push('mario');
+mixed.push("mario");
 mixed.push(false);
 console.log(mixed);
-var ninja;
-ninja = { name: 'yoshi', age: 25 };
+// same with object literals
+let ninja;
+ninja = { name: "yoshi", age: 25 };
 console.log(ninja);
-ninja = { name: 25, age: 'yoshi' };
+ninja = { name: 25, age: "yoshi" };
 console.log(ninja);
