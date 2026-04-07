@@ -1,31 +1,36 @@
 "use strict";
 // classes
-var Invoice = /** @class */ (function () {
-    function Invoice(c, d, a) {
+// reminder - a class is basically a blueprint for an object
+class Invoice {
+    constructor(c, d, a) {
+        // the constructor will assign the values passed in for c, d, and a to the client properties; 'this' here is the object created by the class
         this.client = c;
         this.details = d;
         this.amount = a;
     }
-    Invoice.prototype.format = function () {
-        return this.client + " owes \u00A3" + this.amount + " for " + this.details;
-    };
-    return Invoice;
-}());
-var invOne = new Invoice('mario', 'work on the mario website', 250);
-var invTwo = new Invoice('luigi', 'work on the luigi website', 300);
-var invoices = [];
-invoices.push(invOne);
-invoices.push(invTwo);
-// invoices.push({ name: 'shaun' });
+    ;
+    format() {
+        return `${this.client} owes $${this.amount} for ${this.details}.`;
+    }
+    ;
+}
+;
+const invOne = new Invoice("mario", "work on the mario website", 250);
+const invTwo = new Invoice("luigi", "work on the luigi website", 300);
+console.log(invOne, invTwo);
+// the utility for this - in the future we could for instance create an array that ONLY allows invoice types
+let invoices = [];
+// invoices.push('hello') would return an error
+invoices.push(invOne); // allowed, because this is an Invoice object type
+invoices.push(invTwo); // allowed, because this is an Invoice object type
 console.log(invoices);
-var form = document.querySelector('.new-item-form');
-console.log(form.children);
+const form = document.querySelector(".new-item-form");
 // inputs
-var type = document.querySelector('#type');
-var tofrom = document.querySelector('#tofrom');
-var details = document.querySelector('#details');
-var amount = document.querySelector('#amount');
-form.addEventListener('submit', function (e) {
+const type = document.querySelector("#type");
+const tofrom = document.querySelector("#tofrom");
+const details = document.querySelector("#details");
+const amount = document.querySelector("#amount");
+form.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log(type.value, tofrom.value, details.value, amount.valueAsNumber);
 });
