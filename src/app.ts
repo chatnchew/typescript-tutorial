@@ -1,8 +1,10 @@
 // classes
+  // by default, all properties are public; this can be changed so things are more secure
+  // we can use access modifiers to change how different users can access properties
 class Invoice {
-  // readonly client: string;
+  // readonly client: string; - can access and read but not change
   // private details: string;
-  // public amount: number;
+  // public amount: number; - public is implied by default
 
   constructor(
     readonly client: string, 
@@ -23,10 +25,8 @@ invoices.push(invOne)
 invoices.push(invTwo);
 
 invoices.forEach(inv => {
-  console.log(inv.client, /*inv.details,*/ inv.amount, inv.format());
+  console.log(inv.client, /* inv.details - can't access this outside of the class because of its private property */ inv.amount, inv.format());
 })
-
-
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement;
 console.log(form.children);
