@@ -5,10 +5,10 @@ import { HasFormatter } from './interfaces/HasFormatter.js';
 // let docOne: HasFormatter;
 // let docTwo: HasFormatter;
 
-// docOne = new Invoice('yoshi', 'web work', 250);
+// docOne = new Invoice('yoshi', 'web work', 250); - note: the format method is still part of the object, here we're just sending info to the constructor
 // docTwo = new Payment('mario', 'plumbing', 200);
 
-// let docs: HasFormatter[] = [];
+// let docs: HasFormatter[] = []; - only objects using this interface can be part of this array
 // docs.push(docOne);
 // docs.push(docTwo);
 
@@ -25,6 +25,7 @@ form.addEventListener('submit', (e: Event) => {
   e.preventDefault();
 
   let doc: HasFormatter;
+  // creating a new object using the classes and interface set up previously, based on the value of the form
   if (type.value === 'invoice') {
     doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
   } else {
