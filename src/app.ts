@@ -1,12 +1,14 @@
 import { Invoice } from './classes/Invoice.js';
 
-// interfaces
+// interfaces - differs from a class in that it's not used to create new objects, but enforce a specific structure
 export interface IsPerson {
   name: string;
   age?: number;
   speak(a: string): void;
   spend(a: number): number;
 }
+
+// in a way it puts type parameters around an object; for instance, the object below HAS to have a name and the two methods, and can include an age
 
 const me: IsPerson = {
   name: 'shaun',
@@ -21,12 +23,13 @@ const me: IsPerson = {
 };
 
 console.log(me);
+// running the speak method on the following string
 me.speak('hello, world');
 
+// using IsPerson to define the type of the parameter
 const greetPerson = (person: IsPerson): void => {
   console.log('hello ', person.name);
-}
-
+};
 greetPerson(me);
 //greetPerson({name: 'shaun'});
 
