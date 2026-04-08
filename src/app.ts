@@ -29,12 +29,17 @@ form.addEventListener('submit', (e: Event) => {
   list.render(doc, type.value, 'end');
 });
 
-// GENERICS
+// GENERICS - used to make sure that all of the properties of a copied object are carried over
+
+// for example, in the below function, accessing the .name property of the duplicated object results in an error
 
 // const addUID = (obj: object) => {
 //   let uid = Math.floor(Math.random() * 100);
 //   return {...obj, uid};
 // }
+
+// here, we can capture the properties of the object and include them when they're returned in the new object
+  // the extends makes it clear that the properties are only extended to objects
 
 // const addUID = <T extends object>(obj: T) => {
 //   let uid = Math.floor(Math.random() * 100);
@@ -47,7 +52,7 @@ const addUID = <T extends {name: string}>(obj: T) => {
 }
 
 let docOne = addUID({name: 'yoshi', age: 40});
-//let docTwo = addUID('shaun');
+//let docTwo = addUID('shaun'); - not allowed, as the type is set up to be an object
 
 console.log(docOne.name);
 
@@ -55,18 +60,22 @@ console.log(docOne.name);
 interface Resource<T> {
   uid: number;
   resourceName: string;
+  // here we're using generics to say data will be defined when we create an object using the Resource interface
+    // makes it flexible; if the data is a string, an object, or whatever, it can be defined as such
   data: T;
 }
 
 const docThree: Resource<object> = {
   uid: 1, 
   resourceName: 'person', 
+  // here we passed in the type object
   data: { name: 'shaun' }
 };
 
 const docFour: Resource<string[]> = {
   uid: 1, 
   resourceName: 'shoppingList', 
+  // and here we passed in the type array - all with the same interface
   data: ['bread', 'milk']
 };
 
