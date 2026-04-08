@@ -29,7 +29,8 @@ form.addEventListener('submit', (e: Event) => {
   list.render(doc, type.value, 'end');
 });
 
-// ENUMS
+// ENUMS - way to specify descriptive constants and associate each with a numeric value
+  // ex instead of resourceType: 1, you can assign it to one of the types of the ENUM (book)
 
 enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR };
 
@@ -50,5 +51,5 @@ const docTwo: Resource<object> = {
   data: { title: 'name of the wind' }
 }
 
-console.log(docOne);
+console.log(docOne); // when logged, the number (ie the index) associated with the enum type is displayed instead
 console.log(docTwo);
