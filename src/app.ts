@@ -13,8 +13,8 @@ const details = document.querySelector('#details') as HTMLInputElement;
 const amount = document.querySelector('#amount') as HTMLInputElement;
 
 // list template instance
-const ul = document.querySelector('ul')!;
-const list = new ListTemplate(ul);
+const ul = document.querySelector('ul')!; // grabbing the ul from the DOM
+const list = new ListTemplate(ul); // creating a new ListTemplate class with the ul variable
 
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault();
@@ -25,6 +25,6 @@ form.addEventListener('submit', (e: Event) => {
   } else {
     doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
   }
-  
+  // running the render method from the ListTemplate class
   list.render(doc, type.value, 'end');
 });
